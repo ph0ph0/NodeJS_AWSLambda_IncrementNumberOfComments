@@ -4,14 +4,20 @@
 const AWS = require("aws-sdk");
 const dynamo = new AWS.DynamoDB.DocumentClient({ region: `us-east-1` });
 
+const { eventDetails } = require("./Utils");
+
 exports.handler = async event => {
   console.log("Intercepted event: %j", event);
+
+  const { subjectId } = eventDetails(event);
+  console.log("Got subject id " + subjectId);
 
   const SubjectTable = "Subject-or2wpavvmbatbhfn7vwoynk4c4-dev";
 
   //Get event details
-  //Get Subject
-  //Update Subject table
+  //Get SubjectId
+  //Update Subject table noOfComments
+
   // const {
   //   sourceBucket,
   //   sourceKey,
